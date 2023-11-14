@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Report Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav {
+      background-color: #eee;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #signInContainer, #signUpContainer {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none; /* Initially hide sign-in and sign-up containers */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    input {
+      width: 10%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Medical Report Management</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="toggleForms()">Home</a> |
+    <a href="#" onclick="toggleForms('signInContainer')">Sign In</a> |
+    <a href="#" onclick="toggleForms('signUpContainer')">Sign Up</a>
+  </nav>
+
+  <div id="signInContainer">
+    <h2>Sign In</h2>
+    <form id="signInForm">
+      <label for="signInUsername">Username:</label>
+      <input type="text" id="signInUsername" required>
+      <br>
+      <label for="signInPassword">Password:</label>
+      <input type="password" id="signInPassword" required>
+      <br>
+      <button type="button" onclick="signIn()">Sign In</button>
+    </form>
+  </div>
+
+  <div id="signUpContainer">
+    <h2>Sign Up</h2>
+    <form id="signUpForm">
+      <label for="signUpUsername">Username:</label>
+      <input type="text" id="signUpUsername" required>
+      <br>
+      <label for="signUpPassword">Password:</label>
+      <input type="password" id="signUpPassword" required>
+      <br>
+      <button type="button" onclick="signUp()">Sign Up</button>
+    </form>
+  </div>
+
+  <script>
+    function signIn() {
+      // Implement your sign-in logic here
+      // For simplicity, let's assume a user exists with username "user" and password "password"
+      const username = document.getElementById('signInUsername').value;
+      const password = document.getElementById('signInPassword').value;
+
+      if (username === 'user' && password === 'password') {
+        // Redirect to patient.html
+        window.location.href = "patient.html";
+      } else {
+        alert('Invalid username or password. Please try again.');
+      }
+    }
+
+    function signUp() {
+      // Implement your sign-up logic here
+      // For simplicity, let's assume the sign-up is successful
+      alert('Sign up successful!');
+
+      // Redirect to patient.html
+      window.location.href = "patient.html";
+    }
+
+    function toggleForms(containerToShow) {
+      const signInContainer = document.getElementById('signInContainer');
+      const signUpContainer = document.getElementById('signUpContainer');
+
+      // Hide both containers initially
+      signInContainer.style.display = 'none';
+      signUpContainer.style.display = 'none';
+
+      // Show the specified container
+      if (containerToShow) {
+        document.getElementById(containerToShow).style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>

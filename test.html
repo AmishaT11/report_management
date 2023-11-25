@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Test List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    section {
+      margin: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      border: 1px solid #ddd;
+      margin: 5px;
+      padding: 10px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Test List</h1>
+  </header>
+  
+  <section>
+    <h2>Available Tests</h2>
+    <ul>
+      <li>
+        <span>Blood Test</span>
+        <button onclick="conductTest('Blood Test')">Conduct</button>
+      </li>
+      <li>
+        <span>Liver Test</span>
+        <button onclick="conductTest('Liver Test')">Conduct</button>
+      </li>
+      <li>
+        <span>Sugar Test</span>
+        <button onclick="conductTest('Sugar Test')">Conduct</button>
+      </li>
+      <li>
+        <span>Bile Test</span>
+        <button onclick="conductTest('Bile Test')">Conduct</button>
+      </li>
+      <li>
+        <span>Haemoglobin Test</span>
+        <button onclick="conductTest('Haemoglobin Test')">Conduct</button>
+      </li>
+      <li>
+        <span>Thyroid Test</span>
+        <button onclick="conductTest('Thyroid Test')">Conduct</button>
+      </li>
+      <!-- Add more tests as needed -->
+    </ul>
+  </section>
+
+  <script>
+    function conductTest(testName) {
+      // You can customize the URL as needed
+      window.location.href = "Test_parameters.html?test=" + encodeURIComponent(testName);
+    }
+  </script>
+
+</body>
+</html>

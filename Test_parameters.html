@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="html2pdf.bundle.js"></script>
+  <title>Blood Test Parameters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    section {
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    input[type="text"] {
+      width: 80%;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blood Test Parameters</h1>
+  </header>
+  
+  <section>
+    <table>
+      <tr>
+        <th>Parameters</th>
+        <th>Values</th>
+        <th>Range</th>
+        <th>Unit</th>
+        <th>Flag</th>
+      </tr>
+      <tr>
+        <td>Haemoglobin</td>
+        <td><input type="text" id="hgbValue" oninput="updateFlag('hgb', this.value)"></td>
+        <td>13.00 - 17.00 g/dL</td>
+        <td>g/dL</td>
+        <td><span id="hgbFlag"></span></td>
+      </tr>
+      <tr>
+        <td>PCV</td>
+        <td><input type="text" id="pcvValue" oninput="updateFlag('pcv', this.value)"></td>
+        <td>40.00 - 50.00 %</td>
+        <td>%</td>
+        <td><span id="pcvFlag"></span></td>
+      </tr>
+      <tr>
+        <td>RBC</td>
+        <td><input type="text" id="rbcValue" oninput="updateFlag('rbc', this.value)"></td>
+        <td>4.5 - 5.5 million/µL</td>
+        <td>million/µL</td>
+        <td><span id="rbcFlag"></span></td>
+      </tr>
+      <tr>
+        <td>WBC</td>
+        <td><input type="text" id="wbcValue" oninput="updateFlag('wbc', this.value)"></td>
+        <td>4.0 - 11.0 x 10^3/µL</td>
+        <td>x 10^3/µL</td>
+        <td><span id="wbcFlag"></span></td>
+      </tr>
+      <tr>
+        <td>MCV</td>
+        <td><input type="text" id="mcvValue" oninput="updateFlag('mcv', this.value)"></td>
+        <td>83-101 fL</td>
+        <td>fL</td>
+        <td><span id="mcvFlag"></span></td>
+      </tr>
+      <tr>
+        <td>MCH</td>
+        <td><input type="text" id="mchValue" oninput="updateFlag('mch', this.value)"></td>
+        <td>27-32 pg</td>
+        <td>pg</td>
+        <td><span id="mchFlag"></span></td>
+      </tr>
+      <tr>
+        <td>MCHC</td>
+        <td><input type="text" id="mchcValue" oninput="updateFlag('mchc', this.value)"></td>
+        <td>32.5-34.5 g/dL</td>
+        <td>g/dL</td>
+        <td><span id="mchcFlag"></span></td>
+      </tr>
+      <!-- Add more rows for additional parameters -->
+    </table>
+    <button onclick="submitResults()">Submit</button>
+  </section>
+
+  <script>
+    function updateFlag(parameter, value) {
+      var flagElement = document.getElementById(parameter + 'Flag');
+      var range = getRange(parameter);
+
+      if (value < range[0]) {
+        flagElement.textContent = 'Low';
+      } else if (value > range[1]) {
+        flagElement.textContent = 'High';
+      } else {
+        flagElement.textContent = 'Normal';
+      }
+    }
+
+    function getRange(parameter) {
+      // Define the range for each parameter
+      switch (parameter) {
+        case 'hgb':
+          return [13.00, 17.00];
+        case 'pcv':
+          return [40.00, 50.00];
+        case 'rbc':
+          return [4.5, 5.5];
+        case 'wbc':
+          return [4.0, 11.0];
+        case 'mcv':
+          return [83, 101];
+        case 'mch':
+          return [27, 32];
+        case 'mchc':
+          return [32.5, 34.5];
+        // Add cases for other parameters as needed
+        default:
+          return [0, 0];
+      }
+    }
+
+    function submitResults() {
+      // Generate PDF and trigger download
+      alert("Report submitted successfully");
+      var element = document.querySelector('section');
+      html2pdf(element);
+    }
+  </script>
+
+</body>
+</html>
+

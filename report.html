@@ -39,11 +39,22 @@
     th {
       background-color: #f2f2f2;
     }
+
+    button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Patient Report</h1>
+    <h1>Patient Details</h1>
   </header>
   
   <section>
@@ -57,27 +68,25 @@
         <th>Patient Name</th>
         <td>Shradha Suman Jena</td>
       </tr>
+      <tr>
+        <th>Age</th>
+        <td>30</td>
+      </tr>
+      <tr>
+        <th>Sex</th>
+        <td>Female</td>
+      </tr>
+      <!-- Add more rows for additional details -->
     </table>
+    <button onclick="openTestPage()">Tests</button>
   </section>
 
-  <section>
-    <h2>Blood Test Reports</h2>
-    <table>
-      <tr>
-        <th>Test Type</th>
-        <th>Result</th>
-      </tr>
-      <tr>
-        <td>Hemoglobin</td>
-        <td>12.5 g/dL</td>
-      </tr>
-      <tr>
-        <td>White Blood Cells</td>
-        <td>8.0 x 10^3/µL</td>
-      </tr>
-      <!-- Add more rows for additional test results -->
-    </table>
-  </section>
+  <script>
+    function openTestPage() {
+      window.open("test.html", "_blank");
+    }
+  </script>
 
 </body>
 </html>
+

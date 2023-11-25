@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  
   <script src="html2pdf.bundle.js"></script>
   <title>Blood Test Parameters</title>
   <style>
@@ -13,8 +13,8 @@
       padding: 0;
       background-color: #f4f4f4;
       background-image: url('bg_img.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     header {
@@ -40,13 +40,6 @@
       text-align: left;
     }
 
-    th {
-      
-      background-image: url('bg_img.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    }
-
     input[type="text"] {
       width: 80%;
     }
@@ -55,10 +48,17 @@
       background-color: #4CAF50;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
+      padding: 12px 20px; /* Adjust padding for better button size */
+      font-size: 16px; /* Adjust font size for better readability */
       cursor: pointer;
+      transition: background-color 0.3s; /* Add a smooth transition effect */
     }
-  </style>
+
+    button:hover {
+      background-color: #45a049; /* Darker color on hover */
+    }
+    </style>
 </head>
 <body>
   <header>
@@ -126,7 +126,7 @@
       </tr>
       <!-- Add more rows for additional parameters -->
     </table>
-    <button onclick="submitResults()">Submit</button>
+    <button onclick="generatePDF()">Submit</button>
   </section>
 
   <script>
@@ -166,12 +166,21 @@
       }
     }
 
-    function submitResults() {
-      // Generate PDF and trigger download
-      alert("Report submitted successfully");
+    function generatePDF() {
+      alert("Generating PDF...");
+
       var element = document.querySelector('section');
-      html2pdf(element);
-    }
+
+      html2pdf(element, {
+        margin: 10,
+        filename: 'BloodTestReport.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      });
+
+      alert("PDF generated successfully.");
+    } 
   </script>
 
 </body>
